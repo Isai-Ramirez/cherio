@@ -19,6 +19,9 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 
 mongoose.connect(MONGODB_URI);
 // Routes
+app.get("/", function(req, res){
+    res.render("index")
+})
 app.get("/scrape", function (req, res) {
     axios.get("https://www.reddit.com/r/news").then(function (response) {
         var $ = cheerio.load(response.data);
