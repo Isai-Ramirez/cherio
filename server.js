@@ -33,14 +33,15 @@ mongoose.connect("mongodb://localhost/scraperhomework", { useNewUrlParser: true 
 app.get("/scrape", function (req, res) {
   axios.get("https://www.reddit.com/r/news").then(function (response) {
     var $ = cheerio.load(response.data);
-
-    $("article h2").each(function (i, element) {
+    
+    $(".s1wxl6fq-3 dZdk").each(function (i, element) {
+      console.log(".s1wxl6fq-3 dZdk")
       var result = {};
 
-      result.title = $(this)
+      result.h2 = $(this)
         .children("a")
         .text();
-      result.link = $(this)
+      result.a = $(this)
         .children("a")
         .attr("href");
 
